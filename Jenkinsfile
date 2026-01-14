@@ -7,7 +7,7 @@ pipeline {
 
   environment {
     SCHEME = "SQMAAssignments"
-    DESTINATION = "platform=iOS Simulator,name=iPhone 16,OS=latest"
+    DESTINATION = "platform=iOS Simulator,name=iPhone 16e,OS=26.1"
   }
 
   stages {
