@@ -1,0 +1,27 @@
+pipeline {
+  agent any
+
+  parameters {
+    choice(name: 'SIMULATOR', choices: ['iPhone 17', 'iPhone 16e', 'iPhone 17 Pro'], description: 'Simulator device')
+  }
+
+  stages {
+    stage('Build') {
+      steps {
+        build job: 'iOS-Build', parameters: [string(name: 'SIMULATOR', value: params.SIMULATOR)]
+      }
+    }
+
+    stage('SmokeTests') {
+      steps {
+        build job: 'iOS-SmokeTests', parameters: [string(name: 'SIMULATOR', value: params.SIMULATOR)]
+      }
+    }
+
+    stage('AllTests') {
+      steps {
+        build job: 'iOS-AllTests', parameters: [string(name: 'SIMULATOR', value: params.SIMULATOR)]
+      }
+    }
+  }
+}
