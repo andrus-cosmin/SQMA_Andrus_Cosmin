@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "4AFE4787-62A6-4C7B-ABDD-7FE18AB47EFA",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:SQMAAssignments.xcodeproj",
+        "identifier" : "0751C3072F180EA800AF3A83",
+        "name" : "SQMAAssignmentsTests"
+      }
+    }
+  ],
+  "version" : 1
+}

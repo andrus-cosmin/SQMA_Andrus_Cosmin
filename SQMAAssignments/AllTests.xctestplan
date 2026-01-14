@@ -1,0 +1,31 @@
+{
+  "configurations" : [
+    {
+      "id" : "2A8408AE-8C99-4ACC-BAAF-7A74667B1B61",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:SQMAAssignments.xcodeproj",
+        "identifier" : "0751C3072F180EA800AF3A83",
+        "name" : "SQMAAssignmentsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:SQMAAssignments.xcodeproj",
+        "identifier" : "0751C3112F180EA800AF3A83",
+        "name" : "SQMAAssignmentsUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
