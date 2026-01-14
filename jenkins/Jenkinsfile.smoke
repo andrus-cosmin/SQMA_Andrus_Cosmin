@@ -1,0 +1,46 @@
+pipeline {
+  agent any
+
+  parameters {
+    choice(name: 'SIMULATOR', choices: ['iPhone 17', 'iPhone 16e', 'iPhone 17 Pro'], description: 'Simulator device')
+  }
+
+  environment {
+    WORKSPACE_FILE = "./SQMAAssignments/SQMAAssignments.xcodeproj/project.xcworkspace"
+    SCHEME = "SQMAAssignments"
+    OS_VER = "26.1"
+    TEST_PLAN = "SmokeTests"
+  }
+
+  options {
+    skipDefaultCheckout(true)
+    timestamps()
+  }
+
+  stages {
+    stage('Checkout') {
+      steps { checkout scm }
+    }
+
+    stage('Run Smoke Tests') {
+      steps {
+        sh """
+          set -euo pipefail
+          xcodebuild -version
+
+          xcodebuild \
+            -workspace "${WORKSPACE_FILE}" \
+            -scheme "${SCHEME}" \
+            -testPlan "${TEST_PLAN}" \
+            -destination "platform=iOS Simulator,name=${SIMULATOR},OS=${OS_VER}" \
+            -derivedDataPath DerivedData \
+            clean test | tee smoke.log
+        """
+      }
+    }
+  }
+
+  post {
+    always { archiveArtifacts artifacts: 'smoke.log', allowEmptyArchive: true }
+  }
+}
