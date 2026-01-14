@@ -43,7 +43,7 @@ pipeline {
           xcodebuild \
             -workspace "${WORKSPACE_FILE}" \
             -scheme "${SCHEME}" \
-            -testPlan "FullTests" \
+            -testPlan "AllTests" \
             -destination "platform=iOS Simulator,name=${SIMULATOR},OS=${OS_VER}" \
             -derivedDataPath DerivedData \
             test | tee full.log
